@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include "estado.h"
+
+
+
+int main() {
+    int i = 0;
+    ESTADO e = {0};
+
+    e.grelha[3][4] = VALOR_X;
+    e.grelha[4][3] = VALOR_X;
+    e.grelha[3][3] = VALOR_O;
+    e.grelha[4][4] = VALOR_O;
+
+    printf("\n");
+
+    printa(e);
+    printf("X = %d\n", contaX(&e));
+    printf("O = %d\n", contaO(&e));
+
+    while (i < 30) {
+        if (contaX(&e)!= 0 && contaO(&e)!= 0 && contaV(&e) !=0){
+            possivelX(&e);
+            jogadaX(&e);
+            printa(e);
+            printf("X = %d\n", contaX(&e));
+            printf("O = %d\n", contaO(&e));
+
+            possivelO(&e);
+            jogadaO(&e);
+            printa(e);
+            printf("X = %d\n", contaX(&e));
+            printf("O = %d\n", contaO(&e));
+            i++;
+        }
+        else i = 30;
+    }
+   
+    return 0;
+}

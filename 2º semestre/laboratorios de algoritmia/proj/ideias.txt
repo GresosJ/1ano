@@ -1,0 +1,27 @@
+bot
+nivel 1- random;
+nivel 2- comer mais peças;
+nivel 3- verificas os possiveis e qual deles é o da as piores jogadas de jogador adversario e se tiverem "valores iguais" ele escolhe a posiçao com melhor posiçao; 
+
+
+int bot3 (ESTADO *e, int x[] ,int y[]){
+    int f,m,j=1,r=0,k;
+    int peso[8][8] = {120, -20, 20, 5, 5, 20, -20, 120,
+                      -20, -40, -5, -5, -5, -5, -40, -20,
+                      20, -5, 15, 3, 3, 15, -5, 20,
+                      5, -5, 3, 3, 3, 3, -5, 5,
+                      5, -5, 3, 3, 3, 3, -5, 5,
+                      20, -5, 15, 3, 3, 15, -5, 20,
+                      -20, -40, -5, -5, -5, -5, -40, -20,
+                      120, -20, 20, 5, 5, 20, -20, 120};
+
+    f= possivelP(e,x,y);
+    m = peso[y[0]][x[0]] - (proximajogada(e,x[0],y[0],x,y)) ;
+    while (j<f){
+        k = (peso[y[j]][x[j]] - (proximajogada(e,x[j],y[j],x,y)));
+        if (m <= k) {m = k; r = j; j++;}
+        else j ++;
+    }
+
+    return r;
+}
